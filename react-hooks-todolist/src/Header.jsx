@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { TodoContext } from "./TodoStore.js";
 
-const Header = ({ todos }) => {
+const Header = () => {
+  const { todos } = useContext(TodoContext);
   return (
     <div>
       <h1> Hello Todo Application</h1>

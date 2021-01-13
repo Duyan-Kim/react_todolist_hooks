@@ -1,6 +1,8 @@
 import React from "react";
+import { TodoContext } from "./App.js";
 
-const Form = ({ addTodo, changeInputData }) => {
+const Form = () => {
+  const { addTodo, changeInputData } = useContext(TodoContext)
   return (
     <>
       <form action="">
