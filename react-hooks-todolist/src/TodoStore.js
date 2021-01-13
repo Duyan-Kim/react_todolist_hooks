@@ -8,15 +8,9 @@ export const TodoContext = React.createContext();
 
 const TodoStore = () => {
   const [todos, setTodos] = useState([]);
-  const [newTodo, setNewTodo] = useState();
   const loading = useFetch(setTodos, "http://localhost:8080/todo");
 
-  const changeInputData = (e) => {
-    setNewTodo(e.target.value);
-  };
-
-  const addTodo = (e) => {
-    e.preventDefault();
+  const addTodo = (newTodo) => {
     setTodos([
       ...todos,
       { id: todos.length + 1, title: newTodo, status: "todo" },
@@ -39,9 +33,7 @@ const TodoStore = () => {
   }, [todos]);
 
   return (
-    <TodoContext.Provider
-      value={{ todos, addTodo, changeInputData, loading, changeTodoStatus }}
-    >
+    <TodoContext.Provider value={{ todos, addTodo, loading, changeTodoStatus }}>
       <Header />
       <Form />
       <List
